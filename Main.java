@@ -22,6 +22,9 @@ public class Main {
         long start = System.currentTimeMillis();
         y = ForkJoinPool.commonPool().invoke(new parallel(x, 0, x.length,Integer.parseInt(args[1])));
         long finish = System.currentTimeMillis();
+        System.out.println("sequential program");
+        System.out.println("filter size: "+args[1]);
+        System.out.println("time taken(ms): "+(finish-start));
         PrintWriter fw = new PrintWriter(args[2]);
         fw.println(y.length);
         for(int j=0;j<y.length;j++){
