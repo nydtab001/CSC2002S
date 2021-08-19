@@ -24,10 +24,8 @@ public class test {
             st = st.replace(',', '.');
             x[i] = Double.parseDouble(df.format(Double.parseDouble(st)));
         }
-
-        System.out.println(Arrays.toString(x));
+        long start = System.currentTimeMillis();
         int filter_size = 7;
-
         for(int j = 0; j < size; ++j) {
             int num_neighbours = (filter_size - 1) / 2;
             if (j < num_neighbours) {
@@ -45,8 +43,11 @@ public class test {
                 y[j] = window[window.length / 2];
             }
         }
-
-        System.out.println(Arrays.toString(y));
+        long finish = System.currentTimeMillis();
+        System.out.println("sequential program");
+        System.out.println("filter size: "+filter_size);
+        System.out.println("time taken(ms): "+(finish-start));
+      //  System.out.println(Arrays.toString(y));
     }
 }
 
