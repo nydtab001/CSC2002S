@@ -33,14 +33,14 @@ public class Main {
         System.out.println("parallel program");
         System.out.println("filter size: "+args[1]);
         System.out.println("time taken(ms): "+(finish-start)); //prints the time difference
-        PrintWriter fw = new PrintWriter(args[2]);
-        fw.println(y.length);
+        PrintWriter fw = new PrintWriter(args[2]);  // initializes the file to be written to from the application input
+        fw.println(y.length); // writes the length of the array or the subsequent lines of the file
         for(int j=0;j<y.length;j++){
             String temp = String.valueOf(y[j]);
             temp = temp.replace('.',',');
             temp = j+" "+temp;
-            fw.println(temp);
+            fw.println(temp); // writes each array element on a new line
         }
-        fw.close();
+        fw.close(); // closes the file writer
     }
 }
