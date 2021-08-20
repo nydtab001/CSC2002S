@@ -5,11 +5,20 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
 public class parallel extends RecursiveTask<double[]> {
-    static int SEQUENTIAL_THRESHOLD = 50;
+    static int SEQUENTIAL_THRESHOLD = 21;
     int lo;
     int hi;
     int filter_size;
     double[] arr;
+
+    /**
+     * constructor for the parallel class that performs the parallelization of an input array
+     *
+     * @param a the array to filtered
+     * @param l the specified start position of the array
+     * @param h the specified end postion of the array
+     * @param f the filter size of filter window
+     */
 
     public parallel(double[] a, int l, int h, int f){
         this.lo = l;
@@ -18,6 +27,12 @@ public class parallel extends RecursiveTask<double[]> {
         this.filter_size = f;
     }
 
+    /**
+     * computes the filtering process on a thread.
+     * Uses a recursive step to subdivide an array into individual threads to satisfy the divide and conquer algorithm
+     *
+     * @return retruns the resulting filtered array
+     */
     @Override
     protected double[] compute() {
         if (hi-lo <= SEQUENTIAL_THRESHOLD){
