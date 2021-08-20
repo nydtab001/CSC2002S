@@ -4,6 +4,14 @@ import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 public class Main {
+
+    /**
+     * main method used to fetch data from a file and inserts this data into an array which is to be used for the filtering process
+     *
+     * @param args data input to the application
+     * @throws Exception Exception if the file is not found
+     */
+
     public static void main(String[] args) throws Exception {
         File file = new File("C:\\Users\\Taboka\\Desktop\\Course\\CSC2002S\\Ass1\\src\\"+args[0]);
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -19,12 +27,12 @@ public class Main {
             x[i] = Double.parseDouble(df.format(Double.parseDouble(st)));
             i = i + 1;
         }
-        long start = System.currentTimeMillis();
+        long start = System.currentTimeMillis(); //start of the timing of the thread
         y = ForkJoinPool.commonPool().invoke(new parallel(x, 0, x.length,Integer.parseInt(args[1])));
-        long finish = System.currentTimeMillis();
+        long finish = System.currentTimeMillis(); //end of the timing of the thread
         System.out.println("parallel program");
         System.out.println("filter size: "+args[1]);
-        System.out.println("time taken(ms): "+(finish-start));
+        System.out.println("time taken(ms): "+(finish-start)); //prints the time difference
         PrintWriter fw = new PrintWriter(args[2]);
         fw.println(y.length);
         for(int j=0;j<y.length;j++){

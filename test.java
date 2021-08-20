@@ -9,6 +9,12 @@ public class test {
     public test() {
     }
 
+    /**
+     * main methods that runs the filtering sequentially and used to compare with the parallelized code
+     *
+     * @param args data input to the application
+     * @throws IOException Exception if the file is not found
+     */
     public static void main(String[] args) throws IOException {
         File file = new File("src\\sampleInput100.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -24,7 +30,7 @@ public class test {
             st = st.replace(',', '.');
             x[i] = Double.parseDouble(df.format(Double.parseDouble(st)));
         }
-        long start = System.currentTimeMillis();
+        long start = System.currentTimeMillis(); // start of the filtration timing
         int filter_size = 7;
         for(int j = 0; j < size; ++j) {
             int num_neighbours = (filter_size - 1) / 2;
@@ -43,10 +49,10 @@ public class test {
                 y[j] = window[window.length / 2];
             }
         }
-        long finish = System.currentTimeMillis();
+        long finish = System.currentTimeMillis(); // end of the filteration timing
         System.out.println("sequential program");
         System.out.println("filter size: "+filter_size);
-        System.out.println("time taken(ms): "+(finish-start));
+        System.out.println("time taken(ms): "+(finish-start)); // prints time difference to give the overall time taken
       //  System.out.println(Arrays.toString(y));
     }
 }
