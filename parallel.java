@@ -5,7 +5,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
 public class parallel extends RecursiveTask<double[]> {
-    static int SEQUENTIAL_THRESHOLD = 21;
+    static int SEQUENTIAL_THRESHOLD = 500;
     int lo;
     int hi;
     int filter_size;
@@ -36,7 +36,7 @@ public class parallel extends RecursiveTask<double[]> {
     @Override
     protected double[] compute() {
         if (hi-lo <= SEQUENTIAL_THRESHOLD){
-            double[] y = new double[SEQUENTIAL_THRESHOLD];
+            double[] y = new double[hi-lo];
             for(int i=lo;i<hi;i++){
                 int num_neighbours=(filter_size-1)/2;
                 if(i<num_neighbours+lo) {
