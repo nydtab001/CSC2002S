@@ -44,7 +44,7 @@ public class Main {
             }
             fw.close(); // closes the file writer
         } catch (Exception e) {
-            System.out.println("File"+args[0]+"not found");
+            System.out.println("File "+args[0]+" not found");
         }
     }
 }
