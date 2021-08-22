@@ -24,3 +24,10 @@ default: $(CLASS_FILES)
 clean:
 	rm $(BINDIR)/*.class
 	rm -r $(DOCDIR)/*
+v1=
+v2=
+v3=
+run:
+    @java -cp bin Main ${v1} ${v2} ${v3}
+run2:
+    @java -cp bin test ${v1} ${v2} ${v3}
