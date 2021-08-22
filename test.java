@@ -22,11 +22,11 @@ public class test {
             int i = 0;
             int size = Integer.parseInt(br.readLine());
             DecimalFormat df = new DecimalFormat("#.#####");
-            double[] x = new double[100];
+            double[] x = new double[size];
 
             String st;
             double[] y;
-            for (y = new double[100]; (st = br.readLine()) != null; ++i) {
+            for (y = new double[size]; (st = br.readLine()) != null; ++i) {
                 st = st.split(" ")[1];
                 st = st.replace(',', '.');
                 x[i] = Double.parseDouble(df.format(Double.parseDouble(st)));
